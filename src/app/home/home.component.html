@@ -1,18 +1,22 @@
 
-<div class="w-25 mt-5 m-auto text-center">
-    <div class="todoList bg-info p-3 rounded-top">
-        <a class="text-white text-decoration-none" routerLink="/home"> Todo-List |</a>
-        <a class="text-white text-decoration-none" routerLink="/about"> About |</a>
-        <a class="text-white text-decoration-none" routerLink="/contact"> Contact |</a>
-        <a class="text-white text-decoration-none" routerLink="/service"> Service </a>
-    </div>
+<div class="w-75 mt-5 m-auto text-center">
+    <app-navigation></app-navigation>
     <div class="addTodo bg-secondary p-3 rounded-bottom">
         <div class="inputBox bg-dark p-3 rounded">
             <div>
-                <input placeholder="Add your todo" class="form-control" type="text"> 
+                <input [(ngModel)]="todoTitle" placeholder="Add a title" class="form-control" type="text"> 
             </div>
-             <button type="button" class="btn btn-info mt-3">Submit</button>
+            <br>
+            <div>
+                <input [(ngModel)]="todoDesc" placeholder="Add descreption" class="form-control" type="text"> 
+            </div>
+             <button (click)="addToList()" class="btn btn-info mt-3">Submit</button>
         </div>
+        <div>
+            <ul class="list-group">
+                <li *ngFor="let task of tasks" class="list-group-item"> {{task.title}}, {{task.description}} </li>
+              </ul>
+         </div>
     </div>
 </div>
 
